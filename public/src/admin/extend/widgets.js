@@ -284,11 +284,13 @@ define('admin/extend/widgets', [
 			function clone(location, template) {
 				console.log('Dhanya Shah');
 				const widgets = $('#active-widgets .tab-pane[data-template="' + template + '"] [data-location="' + location + '"] [data-widget]');
-				widgets.each(processWidget(location));
+				for (let i = 0; i < widgets.length; i++) {
+					processWidget($(widgets[i]), location);
+				}
 			}
-			function processWidget(location) {
-				const widget = $(this).clone(true);
-				appendClonedWidget(widget, location);
+			function processWidget(widget, location) {
+				const clonedWidget = widget.clone(true);
+				appendClonedWidget(clonedWidget, location);
 			}
 			function appendClonedWidget(widget, location) {
 				$('#active-widgets .active.tab-pane[data-template]:not([data-template="global"]) [data-location="' + location + '"] .widget-area').append(widget);
