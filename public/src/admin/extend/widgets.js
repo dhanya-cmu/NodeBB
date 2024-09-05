@@ -282,11 +282,13 @@ define('admin/extend/widgets', [
 			}).get().filter(function (i) { return i; });
 
 			function clone(location, template) {
+				console.log('Dhanya Shah');
 				const widgets = $('#active-widgets .tab-pane[data-template="' + template + '"] [data-location="' + location + '"] [data-widget]');
-				widgets.each(function () {
-					const widget = $(this).clone(true);
-					appendClonedWidget(widget, location);
-				});
+				widgets.each(processWidget(location));
+			}
+			function processWidget(location) {
+				const widget = $(this).clone(true);
+				appendClonedWidget(widget, location);
 			}
 			function appendClonedWidget(widget, location) {
 				$('#active-widgets .active.tab-pane[data-template]:not([data-template="global"]) [data-location="' + location + '"] .widget-area').append(widget);
