@@ -265,7 +265,7 @@ define('admin/extend/widgets', [
 		$('#active-widgets .active.tab-pane[data-template]:not([data-template="global"]) [data-location="' + location + '"] .widget-area').append(widget);
 	}
 
-	function setupCloneButton() {
+	function setupCloneButton() { // all correct
 		const cloneContainer = $('[component="clone"]');
 		const cloneBtn = $('[component="clone/button"]');
 
